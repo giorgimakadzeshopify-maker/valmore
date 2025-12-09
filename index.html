@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Portavio — Personal Portfolio Websites</title>
+  <meta name="description" content="Portavio creates premium one-page portfolio websites for freelancers and professionals. Fast, modern, and SEO-ready." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- BASE / RESET ---------- */
+    :root{
+      --bg: #ffffff;
+      --muted: #6b7280;
+      --text: #0f1724;
+      --accent: #2563eb;
+      --accent-2: #7c3aed;
+      --glass: rgba(255,255,255,0.8);
+      --card: #fbfdff;
+      --shadow: 0 6px 24px rgba(16,24,40,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:28px;}
+    main{padding-bottom:80px;}
+
+    /* ---------- HEADER / NAV ---------- */
+    header.site-header{padding:22px 0;}
+    .nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .brand {display:flex;align-items:center;gap:14px}
+    .brand-mark{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:var(--shadow)}
+    .brand-text{line-height:1}
+    .brand-title{font-family: 'Playfair Display', serif;font-size:18px;margin:0}
+    .brand-sub{font-size:12px;color:var(--muted);margin-top:2px}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 24px rgba(37,99,235,0.12)}
+    .btn.ghost{background:transparent;border:1px solid rgba(15,23,36,0.06);color:var(--text)}
+
+
+    /* ---------- HERO ---------- */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:center;padding:48px 0}
+    .hero-left{max-width:680px}
+    .eyebrow{display:inline-block;background:rgba(37,99,235,0.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px}
+    h1.hero-title{font-family:'Playfair Display',serif;font-size:44px;margin:0 0 14px;line-height:1.05}
+    p.lead{color:var(--muted);font-size:17px;margin:0 0 20px;line-height:1.6}
+    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .chip{background:var(--card);padding:10px 12px;border-radius:10px;border:1px solid rgba(15,23,36,0.04);font-weight:600;color:var(--muted);font-size:14px;box-shadow:var(--shadow)}
+    .hero-cta{display:flex;gap:12px;align-items:center;margin-top:18px}
+
+    /* --------- SIDEBAR CARD --------- */
+    .card{background:linear-gradient(180deg,#fff,#fbfdff);border-radius:14px;padding:22px;box-shadow:var(--shadow);border:1px solid rgba(15,23,42,0.03)}
+    .price{font-size:20px;font-weight:700;color:var(--text)}
+    .small{font-size:13px;color:var(--muted);margin-top:6px}
+    .plan-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+    .plan-item{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:10px;background:rgba(15,23,42,0.02);font-weight:600}
+
+    /* ---------- PORTFOLIO ---------- */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+    .work{border-radius:12px;overflow:hidden;border:1px solid rgba(15,23,42,0.04);background:white;box-shadow:0 8px 30px rgba(15,23,42,0.04)}
+    .work .meta{padding:14px}
+    .work h3{margin:0;font-size:16px}
+    .work p{margin:6px 0 0;font-size:13px;color:var(--muted)}
+
+    /* ---------- ABOUT / PRICING ---------- */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px;align-items:start}
+    .about-card{background:linear-gradient(180deg,#fff,#fbfdff);padding:18px;border-radius:12px;border:1px solid rgba(15,23,42,0.03);box-shadow:var(--shadow)}
+    .pricing-cards{display:flex;gap:12px;margin-top:14px}
+    .pricing{flex:1;padding:18px;border-radius:12px;background:white;border:1px solid rgba(15,23,42,0.04)}
+    .pricing h4{margin:0 0 8px}
+
+    /* ---------- CONTACT ---------- */
+    .contact-form{display:flex;flex-direction:column;gap:8px}
+    input,textarea{padding:12px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);font-size:14px}
+    textarea{min-height:120px;resize:vertical}
+
+    /* ---------- FOOTER ---------- */
+    footer{border-top:1px solid rgba(15,23,42,0.04);padding:28px 0;margin-top:40px;color:var(--muted);font-size:14px}
+
+    /* ---------- CHATBOT (small demo) ---------- */
+    #chatbot-button {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(37,99,235,0.16);
+      z-index: 9999;
+    }
+    #chatbot-window {
+      position: fixed;
+      bottom: 92px;
+      right: 22px;
+      width: 320px;
+      max-height: 460px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(2,6,23,0.12);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 9999;
+      border: 1px solid rgba(15,23,42,0.06);
+    }
+    #chatbot-header{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:12px;text-align:center;font-weight:700}
+    #chatbot-messages{padding:10px;height:300px;overflow:auto;font-size:14px;color:var(--text)}
+    .chat-row{margin-bottom:8px;display:flex}
+    .chat-row.user{justify-content:flex-end}
+    .bubble{max-width:78%;padding:8px 12px;border-radius:12px;background:#f3f4f6;color:var(--text)}
+    .bubble.user{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+    #chatbot-input{border:none;border-top:1px solid rgba(15,23,42,0.06);padding:12px;width:100%;outline:none}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr 320px;gap:22px}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:720px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .grid{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr;gap:18px}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div class="brand-text">
+          <div class="brand-title">Portavio</div>
+          <div class="brand-sub">Personal websites — made premium</div>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a class="btn ghost" href="#portfolio">Portfolio</a>
+        <a class="btn ghost" href="#pricing">Pricing</a>
+        <a class="btn primary" href="#contact">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-left">
+          <div class="eyebrow">Professional • Fast • Global</div>
+          <h1 id="hero-title" class="hero-title">Build a beautiful online portfolio in hours — not weeks.</h1>
+          <p class="lead">Portavio crafts clean, high-converting one-page websites for freelancers, designers, developers and creators. Get a modern personal site with logo, portfolio and contact ready to share.</p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="#contact">Start for $10</a>
+            <a class="btn ghost" href="#pricing">View plans</a>
+          </div>
+
+          <div class="features" aria-hidden="true">
+            <div class="chip">Responsive</div>
+            <div class="chip">SEO-ready</div>
+            <div class="chip">Fast delivery</div>
+            <div class="chip">Custom colors</div>
+          </div>
+
+          <div class="grid" style="margin-top:26px;">
+            <article class="work">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Sample project">
+              <div class="meta">
+                <h3>Brand identity for Lina</h3>
+                <p>Minimal portfolio & case study — photography site</p>
+              </div>
+            </article>
+
+            <article class="work">
+              <img src="https://images.unsplash.com/photo-1485168217156-0c23d7b5b0f3?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Sample project">
+              <div class="meta">
+                <h3>Dev portfolio — Mark</h3>
+                <p>Clean developer landing and projects section</p>
+              </div>
+            </article>
+
+            <article class="work">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="Sample project">
+              <div class="meta">
+                <h3>Designer showreel — Aria</h3>
+                <p>Case studies, imagery and contact</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div class="small">Starter Plan</div>
+                <div class="price">$10</div>
+              </div>
+              <div style="text-align:right">
+                <div class="small">Delivery</div>
+                <div style="font-weight:700">24 hours</div>
+              </div>
+            </div>
+
+            <div class="small" style="margin-top:12px">Everything you need for a clean personal site: hero, about, projects, contact & sharing link.</div>
+
+            <div class="plan-list">
+              <div class="plan-item"><span>Responsive layout</span><span>✓</span></div>
+              <div class="plan-item"><span>Basic SEO</span><span>✓</span></div>
+              <div class="plan-item"><span>Logo mark</span><span>✓</span></div>
+              <div class="plan-item"><span>One revision</span><span>✓</span></div>
+            </div>
+
+            <div style="margin-top:12px">
+              <a class="btn primary" href="#contact">Order now</a>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about" style="margin-top:40px">
+        <div class="split">
+          <div class="about-card">
+            <h3>About Portavio</h3>
+            <p style="color:var(--muted)">Portavio helps professionals showcase their work with premium one-page websites. Fast setup, thoughtful design, and an emphasis on clarity and conversion.</p>
+            <ul style="margin-top:12px;color:var(--muted);line-height:1.6">
+              <li>Clean, minimal layouts built for hiring and discovery.</li>
+              <li>Images, project case-studies and contact form included.</li>
+              <li>Optional domain & email setup for professional presentation.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>How it works</h3>
+            <ol style="color:var(--muted);line-height:1.7">
+              <li>You send your content (bio, projects, photos).</li>
+              <li>We design and deliver a ready-to-share link.</li>
+              <li>You review and request a single revision.</li>
+            </ol>
+
+            <div style="margin-top:12px" id="pricing">
+              <div class="pricing-cards">
+                <div class="pricing">
+                  <h4>Basic</h4>
+                  <div style="font-weight:700;font-size:18px">$10</div>
+                  <p style="color:var(--muted)">One page — hero, about, projects, contact</p>
+                </div>
+                <div class="pricing">
+                  <h4>Pro</h4>
+                  <div style="font-weight:700;font-size:18px">$25</div>
+                  <p style="color:var(--muted)">Gallery, SEO, branding colors, 2 revisions</p>
+                </div>
+                <div class="pricing">
+                  <h4>Premium</h4>
+                  <div style="font-weight:700;font-size:18px">$50</div>
+                  <p style="color:var(--muted)">Custom layouts, logo, domain help, priority support</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:36px">
+        <div class="about-card">
+          <h3>Get started — contact</h3>
+          <p style="color:var(--muted)">Fill the form and we’ll prepare a fast draft for your review.</p>
+
+          <form class="contact-form" onsubmit="return handleContact(event)">
+            <input id="name" type="text" placeholder="Your full name" required>
+            <input id="email" type="email" placeholder="Email address" required>
+            <input id="package" type="text" placeholder="Package (Basic / Pro / Premium)" required>
+            <textarea id="message" placeholder="Tell us a bit about your work"></textarea>
+            <div style="display:flex;gap:10px;align-items:center">
+              <button class="btn primary" type="submit">Send request</button>
+              <div class="small" style="color:var(--muted)">We reply within 24 hours.</div>
+            </div>
+            <div id="contact-result" style="margin-top:8px;color:var(--muted)"></div>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>© <strong>Portavio</strong> — Personal websites that speak for you.</div>
+      <div style="color:var(--muted)">Designed & delivered worldwide • <a href="mailto:hello@portavio.example">hello@portavio.example</a></div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT DEMO -->
+  <div id="chatbot-button" title="Chat with Portavio">💬</div>
+  <div id="chatbot-window" role="dialog" aria-label="Portavio assistant">
+    <div id="chatbot-header">Portavio Assistant</div>
+    <div id="chatbot-messages">
+      <div class="chat-row"><div class="bubble">Hi 👋 — Ask any question about Portavio services. Try "pricing" or "delivery".</div></div>
+    </div>
+    <input id="chatbot-input" type="text" placeholder="Type a message and press Enter" autocomplete="off">
+  </div>
+
+  <script>
+    // CONTACT FORM (demo: just shows a message; replace with server endpoint if available)
+    function handleContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const pkg = document.getElementById('package').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const res = document.getElementById('contact-result');
+      if(!name || !email || !pkg){ res.textContent = "Please complete required fields."; return false; }
+      res.style.color = "var(--accent)";
+      res.textContent = "Thanks — your request has been recorded. We'll contact you within 24 hours.";
+      // Optionally: send to server here (fetch POST)
+      return false;
+    }
+
+    // CHATBOT: simple demo responses
+    const btn = document.getElementById('chatbot-button');
+    const win = document.getElementById('chatbot-window');
+    const msgs = document.getElementById('chatbot-messages');
+    const input = document.getElementById('chatbot-input');
+
+    btn.addEventListener('click', ()=> {
+      win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+      if(win.style.display === 'flex') input.focus();
+    });
+
+    input.addEventListener('keydown', (e)=>{
+      if(e.key !== 'Enter') return;
+      const text = input.value.trim();
+      if(!text) return;
+      appendMessage('user', text);
+      input.value = '';
+      // simple intent matching
+      setTimeout(()=> {
+        const t = text.toLowerCase();
+        if(t.includes('price') || t.includes('pricing') || t.includes('$')) {
+          appendMessage('bot', 'Our plans start at $10 (Basic), $25 (Pro) and $50 (Premium). See the pricing section for details.');
+        } else if(t.includes('time') || t.includes('delivery')) {
+          appendMessage('bot', 'Typical delivery: Basic within 24 hours. Pro and Premium depend on requirements — usually 1–3 days.');
+        } else if(t.includes('seo') || t.includes('search')) {
+          appendMessage('bot', 'We add basic SEO: fast load, meta tags and shareable links. Advanced SEO is available in Premium.');
+        } else if(t.includes('how') || t.includes('work')) {
+          appendMessage('bot', 'Send your content (bio, links, images). We build a draft and deliver a shareable link for review.');
+        } else {
+          appendMessage('bot', 'Thanks! We received your question. We will reply via email within 24 hours or you can order directly from the contact form.');
+        }
+      }, 600);
+    });
+
+    function appendMessage(who, text) {
+      const row = document.createElement('div');
+      row.className = 'chat-row ' + (who === 'user' ? 'user' : 'bot');
+      const b = document.createElement('div');
+      b.className = 'bubble ' + (who === 'user' ? 'user' : '');
+      b.innerText = text;
+      row.appendChild(b);
+      msgs.appendChild(row);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    // optional: expose quick start via URL param ?demo=1
+    (function(){
+      const p = new URLSearchParams(location.search);
+      if(p.get('demo') === '1'){
+        // open chat after a short delay
+        setTimeout(()=>{ win.style.display='flex'; input.focus(); }, 800);
+      }
+    })();
+  </script>
+
+</body>
+</html>
